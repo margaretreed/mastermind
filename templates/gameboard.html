@@ -2,6 +2,86 @@
 {% block title %}Mastermind{% endblock %}
 
 {% block body %}
-  <h1>Gameboard</h1>
+  <h1>Mastermind Gameboard</h1>
 
+  <div id="gameboard">
+    <form id="user-guess-form">
+      <div>
+        <label>
+          <input id="num-input1" type="number" min="0" max="7">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input id="num-input2"type="number" min="0" max="7">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input id="num-input3" type="number" min="0" max="7">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input id="num-input4" type="number" min="0" max="7">
+        </label>
+      </div>
+
+      <div>
+        <button id="submit-guess-btn">Submit Guess</button>
+      </div>
+
+    </form>
+</div>
+
+  <div id="gamelog">
+  </div>
+
+{% endblock %}
+
+{% block script%}
+  <script>
+    const button = document.querySelector('#submit-guess-btn');
+    const secret_code = JSON.parse('{{ hidden_code | tojson }}');
+    let guess_count = 0;
+
+    document.querySelector('#gamelog').insertAdjacentHTML('beforeend', `<p>${secret_code}</p>`);
+
+    button.addEventListener('click', evt => {
+      evt.preventDefault();
+      guess_count+=1;
+
+      const formInputs = {
+        num1: document.querySelector('#num-input1').value,
+        num2: document.querySelector('#num-input2').value,
+        num3: document.querySelector('#num-input3').value,
+        num4: document.querySelector('#num-input4').value,
+        hidden_code: secret_code
+      };
+
+      fetch('/mastermind/guess', {
+        method: 'POST',
+        body: JSON.stringify(formInputs),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+
+          document.querySelector('#gamelog').insertAdjacentHTML('beforeend', `<p>Guess #${guess_count}: ${formInputs.num1} ${formInputs.num2} ${formInputs.num3} ${formInputs.num4}</p>
+                                                                              <ul><li>Number of correct numbers: ${responseJson.num_correct}</li>
+                                                                                <li>Number of correct digits: ${responseJson.num_correct_loc}</li></ul><br>`);
+        });
+
+        if(guess_count === 10){
+          document.querySelector('#gameboard').insertAdjacentHTML('afterbegin', `<h1>Game Over!</h1><p>Answer Reveal: ${secret_code}</p><a href="/mastermind"><button type="submit">New Game</button></a>`);
+          document.querySelector('#user-guess-form').style.display = 'none';
+        }
+    });
+
+  </script>
 {% endblock %}

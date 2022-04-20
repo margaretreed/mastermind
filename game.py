@@ -46,6 +46,23 @@ def get_num_correct_loc(hidden_code, player_guess):
     
     return num_correct_loc
 
-# hidden_code = ['4', '3', '2', '1']
-# player_guess = ['3', '4', '0', '4']
-# print(get_num_correct_loc(hidden_code, player_guess))
+def evaluate_guess(hidden_code, player_guess):
+
+    if is_guess_correct(hidden_code, player_guess):
+        return {"won": True}
+
+    num_correct_loc = get_num_correct_loc(hidden_code, player_guess)
+    num_correct = get_num_correct(hidden_code, player_guess)
+
+    response_dict = {
+        "won": False,
+        "num_correct": num_correct,
+        "num_correct_loc": num_correct_loc
+    }
+
+    return response_dict
+
+    
+hidden_code1 = ['4', '3', '2', '1']
+player_guess1 = ['3', '4', '0', '4']
+print(evaluate_guess(hidden_code1, player_guess1))
