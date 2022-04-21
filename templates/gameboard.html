@@ -2,42 +2,49 @@
 {% block title %}Mastermind{% endblock %}
 
 {% block body %}
-  <h1>Mastermind Gameboard</h1>
+  <div class="heading">
+    <h1 id="game-title">MASTERMIND</h1>
+  </div>
 
-  <div id="gameboard">
-    <form id="user-guess-form">
-      <div>
-        <label>
-          <input id="num-input1" type="number" min="0" max="7">
-        </label>
-      </div>
+  <div class="main">
+    <div id="gameboard">
+      <form id="user-guess-form">
+        <div id="form-inputs">
+          <div>
+            <label>
+              <input id="num-input1" class="box" type="number" min="0" max="7">
+            </label>
+          </div>
 
-      <div>
-        <label>
-          <input id="num-input2"type="number" min="0" max="7">
-        </label>
-      </div>
+          <div>
+            <label>
+              <input id="num-input2" class="box" type="number" min="0" max="7">
+            </label>
+          </div>
 
-      <div>
-        <label>
-          <input id="num-input3" type="number" min="0" max="7">
-        </label>
-      </div>
+          <div>
+            <label>
+              <input id="num-input3" class="box" type="number" min="0" max="7">
+            </label>
+          </div>
 
-      <div>
-        <label>
-          <input id="num-input4" type="number" min="0" max="7">
-        </label>
-      </div>
+          <div>
+            <label>
+              <input id="num-input4" class="box" type="number" min="0" max="7">
+            </label>
+          </div>
+        </div>
 
-      <div>
-        <button id="submit-guess-btn">Submit Guess</button>
-      </div>
+        <div id="btn-container">
+          <button id="submit-guess-btn">Submit Guess</button>
+        </div>
+      </form>
+    </div>
 
-    </form>
-</div>
+    <div id="gamelog">
+      <h2 id="gamelog-title">Gamelog</h2>
+    </div>
 
-  <div id="gamelog">
   </div>
 
 {% endblock %}
@@ -78,7 +85,7 @@
         });
 
         if(guess_count === 10){
-          document.querySelector('#gameboard').insertAdjacentHTML('afterbegin', `<h1>Game Over!</h1><p>Answer Reveal: ${secret_code}</p><a href="/mastermind"><button type="submit">New Game</button></a>`);
+          document.querySelector('#gameboard').insertAdjacentHTML('afterbegin', `<div class="gameover"><h1 class="gameover-title">Game Over!</h1><p>Secret Code: ${secret_code}</p><a href="/"><button type="submit">New Game</button></a><div>`);
           document.querySelector('#user-guess-form').style.display = 'none';
         }
     });

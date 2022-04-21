@@ -7,10 +7,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def homepage():
-    return render_template("homepage.html")
-
-@app.route("/mastermind")
-def mastermind():
     hidden_code = game.generate_hidden_code()
     return render_template("gameboard.html", hidden_code=hidden_code)
 
