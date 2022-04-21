@@ -14,7 +14,7 @@ This single page web app replicates the classic decoding board game, Mastermind.
 **Backend:** Python3, Flask, Jinja<br>
 **Frontend:** HTML5, CSS3, Javascript<br>
 
-## Installation Instruction <a name="installation"></a>
+## Installation Instructions <a name="installation"></a>
 
 To have this app running on your local computer, please follow the below steps:
 
