@@ -1,5 +1,7 @@
 # Mastermind Game
 
+<img src="/static/mastermind-screenshot.png" width="350" />
+
 This single page web app replicates the classic decoding board game, Mastermind. When a game is initiated, a secret code is generated. Users have 10 chances to guess the code, and are given feedback after each guess as to whether their numbers are correct, correct and in the right location, or incorrect.
 
 ## Table of Contents
@@ -46,7 +48,9 @@ Navigate to `localhost:5000/`
 
 
 ## Version 2.0 <a name="version2"></a>
-- 
+- Track wins and losses
+- Allow user to toggle hints option to include details on which numbers are correct and in the correct location
+- Allow users to increase difficulty in the game by adjusting increasing the amount of numbers used in the secret code
 
 ## About the Developer <a name="about"></a>
 Meg Reed is a software engineer in Berkeley, CA.
