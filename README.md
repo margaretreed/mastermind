@@ -1,8 +1,8 @@
 # Mastermind Game
 
-<img src="/static/mastermind-screenshot.png" width="350" />
+<img src="/static/mastermind-screenshot.png" width="500" />
 
-This single page web app replicates the classic decoding board game, Mastermind. When a game is initiated, a secret code is generated. Users have 10 chances to guess the code, and are given feedback after each guess as to whether their numbers are correct, correct and in the right location, or incorrect.
+This single page web app replicates the classic decoding board game, Mastermind. When a game is initiated, a secret code is generated, and your job is to guess the secret code in less than 10 tries! Users submit their guesses, and are given feedback on how many of their guessed numbers are correct, correct and in the right location, or incorrect. Feedback is represented by different colored dots to mimic the peg-style feedback in the original game. 
 
 ## Table of Contents
  - [Tech Stack](#techstack)
