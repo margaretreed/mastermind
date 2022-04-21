@@ -63,6 +63,6 @@ def evaluate_guess(hidden_code, player_guess):
     return response_dict
 
     
-hidden_code1 = ['4', '3', '2', '1']
-player_guess1 = ['3', '4', '0', '4']
-print(evaluate_guess(hidden_code1, player_guess1))
+# hidden_code1 = ['4', '3', '2', '1']
+# player_guess1 = ['3', '4', '0', '4']
+# print(evaluate_guess(hidden_code1, player_guess1))
